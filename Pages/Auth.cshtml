@@ -1,0 +1,57 @@
+@page
+@model RazorDemo.Pages.AuthModel
+@{
+    ViewData["Title"] = "Login or Register";
+}
+
+<section class="auth-page py-5">
+    <div class="row g-4 justify-content-center">
+        <div class="col-lg-5">
+            <div class="auth-card">
+                <h2>Login</h2>
+                <form method="post" asp-page-handler="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <div class="mb-3">
+                        <label class="form-label" for="loginEmail">Email</label>
+                        <input id="loginEmail" name="email" type="email" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="loginPassword">Password</label>
+                        <input id="loginPassword" name="password" type="password" class="form-control" required />
+                    </div>
+                    <button type="submit" class="btn register-btn w-100">LOGIN</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="auth-card">
+                <h2>Register</h2>
+                @if (TempData["SuccessMessage"] is string successMessage)
+                {
+                    <div class="alert alert-success">@successMessage</div>
+                }
+                <form method="post" asp-page-handler="Register">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <div class="mb-3">
+                        <label class="form-label" for="fullName">Full name</label>
+                        <input id="fullName" name="fullName" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="registerEmail">Email</label>
+                        <input id="registerEmail" name="email" type="email" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="registerPassword">Password</label>
+                        <input id="registerPassword" name="password" type="password" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="confirmPassword">Confirm password</label>
+                        <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" required />
+                    </div>
+                    <button type="submit" class="btn register-btn w-100">REGISTER</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

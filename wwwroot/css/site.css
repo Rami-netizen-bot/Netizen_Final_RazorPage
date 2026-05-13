@@ -1,0 +1,289 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+body {
+    background-color: #050a18; /* ពណ៌ផ្ទៃខាងក្រោយងងឹតខ្លាំង */
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+}
+
+.main-wrapper {
+    background: radial-gradient(circle at top right, #102a43, #050a18);
+    padding-bottom: 50px;
+}
+
+/* Typography */
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 20px 0;
+}
+
+.text-blue {
+    color: #00d2ff;
+    background: linear-gradient(to right, #00d2ff, #3a7bd5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    color: #a0aec0;
+    font-size: 1.1rem;
+    max-width: 550px;
+    margin-bottom: 30px;
+}
+
+/* Buttons & Badge */
+.badge-pill {
+    background: rgba(0, 210, 255, 0.1);
+    color: #00d2ff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 0.85rem;
+}
+
+.btn-cyan {
+    background-color: #00d2ff;
+    color: #050a18;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.btn-outline {
+    border: 1px solid #2d3748;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+/* Learning Box Right Side */
+.learning-card-box {
+    background: #0d1526;
+    border: 1px solid #1a2a4a;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.box-label {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: #718096;
+    margin-bottom: 25px;
+}
+
+.info-item {
+    display: flex;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+}
+
+.icon-box {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.purple { background: #6b46c1; color: white; }
+.pink { background: #d53f8c; color: white; }
+.blue { background: #3182ce; color: white; }
+
+.info-text h6 { margin: 0; font-size: 1rem; }
+.info-text p { margin: 0; font-size: 0.85rem; color: #a0aec0; }
+
+.tag-label {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 5px;
+    background: rgba(255,255,255,0.1);
+    margin-top: 5px;
+    display: inline-block;
+}
+
+/* Stats */
+.stat-card {
+    background: #0d1526;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #1a2a4a;
+}
+/* Custom Navbar Styling */
+.custom-navbar {
+    background-color: #050a18; /* Dark navy background */
+    padding: 15px 0;
+    border-bottom: 1px solid #1a2a4a;
+}
+
+.custom-navbar .nav-link {
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    padding: 8px 20px !important;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+/* The Active "Pill" effect for HOME */
+.active-pill {
+    background-color: rgba(0, 210, 255, 0.1); /* Faint cyan background */
+    color: #00d2ff !important; /* Bright cyan text */
+    border-radius: 8px;
+}
+
+.custom-navbar .nav-link:hover {
+    color: #00d2ff !important;
+}
+
+/* Dropdown arrow color */
+.dropdown-toggle::after {
+    color: #a0aec0;
+}
+
+/* Center items and remove default mobile toggler border */
+.navbar-toggler {
+    border: none;
+}
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+/* Container for auth buttons */
+.auth-buttons {
+    gap: 15px; /* Space between Login and Register */
+}
+
+/* Login Link (Plain text) */
+.login-link {
+    color: #a0aec0 !important; /* Slightly greyish white */
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+
+.login-link:hover {
+    color: #ffffff !important;
+}
+
+/* Register Button (Cyan Box) */
+.register-btn {
+    background-color: #0099bc; /* Darker cyan from the image */
+    color: #ffffff !important;
+    font-weight: 800;
+    font-size: 0.9rem;
+    padding: 8px 24px;
+    border-radius: 12px; /* Smooth rounded corners */
+    border: none;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.register-btn:hover {
+  background-color: #00b4d8;
+  transform: translateY(-1px);
+}
+
+.auth-page {
+  min-height: 70vh;
+}
+
+.auth-card {
+  background: #0d1526;
+  border: 1px solid #1a2a4a;
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.auth-card h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.auth-card .form-label {
+  color: #d6e4f0;
+  font-weight: 600;
+}
+
+.auth-card .form-control {
+  background-color: #081225;
+  border-color: #1a2a4a;
+  color: #ffffff;
+}
+
+.auth-card .form-control:focus {
+  background-color: #081225;
+  border-color: #00d2ff;
+  color: #ffffff;
+}
+/* បន្ថែមពីលើ CSS ចាស់របស់អ្នក */
+.auth-card {
+    transition: all 0.5s ease-in-out;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-control:focus {
+    background-color: #1a2a4a !important;
+    border-color: #00d2ff !important;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+    color: white !important;
+}
+
+.error-message {
+    background: rgba(255, 0, 0, 0.1);
+    color: #ff4d4d;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+.btn-cyan-auth:active {
+    transform: scale(0.98);
+}

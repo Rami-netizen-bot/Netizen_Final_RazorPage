@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>RazorDemo Code Summary - 2026-05-13</title>
+    <style>
+        body {
+            font-family: Calibri, Arial, sans-serif;
+            color: #222;
+            line-height: 1.45;
+            margin: 32px;
+        }
+        h1 {
+            color: #0b3d5c;
+            border-bottom: 2px solid #0b3d5c;
+            padding-bottom: 8px;
+        }
+        h2 {
+            color: #145374;
+            margin-top: 24px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 12px 0 20px;
+        }
+        th, td {
+            border: 1px solid #c8d3dc;
+            padding: 8px;
+            vertical-align: top;
+        }
+        th {
+            background: #eaf4fa;
+        }
+        code {
+            font-family: Consolas, monospace;
+            background: #f4f4f4;
+            padding: 1px 4px;
+        }
+        .ok {
+            color: #146c2e;
+            font-weight: bold;
+        }
+        .warn {
+            color: #9a5b00;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>RazorDemo Code Summary</h1>
+    <p><strong>Date:</strong> 2026-05-13</p>
+    <p><strong>Project:</strong> RazorDemo, ASP.NET Core Razor Pages, .NET 9</p>
+
+    <h2>Current Goal</h2>
+    <p>The main goal today was to fix the login/register screen, connect it to the project database context, and make the navbar show Login/Register or Logout depending on authentication state.</p>
+
+    <h2>Main Code Files Used</h2>
+    <table>
+        <tr>
+            <th>File</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><code>Program.cs</code></td>
+            <td>Registers services: database context, authentication cookie, Identity, Data Protection, logging, Razor Pages, and startup database creation.</td>
+        </tr>
+        <tr>
+            <td><code>appsettings.json</code></td>
+            <td>Stores SQL Server LocalDB connection string named <code>DefaultConnection</code>.</td>
+        </tr>
+        <tr>
+            <td><code>RazorDemo.csproj</code></td>
+            <td>Contains NuGet package references for Entity Framework Core, SQL Server, Identity, and EF tools.</td>
+        </tr>
+        <tr>
+            <td><code>Controller/ApplicationDbContext.cs</code></td>
+            <td>Defines <code>ApplicationDbContext</code>, inherits from <code>IdentityDbContext</code>, and exposes <code>DbSet&lt;User&gt; AppUsers</code>.</td>
+        </tr>
+        <tr>
+            <td><code>Model/User.cs</code></td>
+            <td>Custom user table model with name, email, gender, role, remark, and password fields.</td>
+        </tr>
+        <tr>
+            <td><code>Pages/Auth.cshtml.cs</code></td>
+            <td>Contains login, register, and logout handlers used by the login/register screen.</td>
+        </tr>
+        <tr>
+            <td><code>Pages/Login.cshtml</code></td>
+            <td>Visible login/register screen with a JavaScript toggle between sign in and sign up forms.</td>
+        </tr>
+        <tr>
+            <td><code>Pages/Auth.cshtml</code></td>
+            <td>Alternative auth page created during repair. It also uses <code>AuthModel</code>.</td>
+        </tr>
+        <tr>
+            <td><code>Pages/Shared/_Layout.cshtml</code></td>
+            <td>Navbar links for Login, Register, and Logout.</td>
+        </tr>
+        <tr>
+            <td><code>wwwroot/css/site.css</code></td>
+            <td>Main styling for navbar, auth cards, buttons, and page design.</td>
+        </tr>
+    </table>
+
+    <h2>Problems Found And Fixes</h2>
+    <table>
+        <tr>
+            <th>Problem</th>
+            <th>Cause</th>
+            <th>Fix Applied</th>
+        </tr>
+        <tr>
+            <td>Invalid <code>appsettings.json</code></td>
+            <td>The connection string was outside the main JSON object.</td>
+            <td>Moved <code>ConnectionStrings</code> inside the root JSON object.</td>
+        </tr>
+        <tr>
+            <td>Missing EF/Identity packages</td>
+            <td>The project file did not reference EF Core SQL Server or Identity packages.</td>
+            <td>Added package references in <code>RazorDemo.csproj</code>.</td>
+        </tr>
+        <tr>
+            <td>Duplicate database setup</td>
+            <td><code>Program.cs</code> had MySQL setup and SQL Server setup at the same time.</td>
+            <td>Removed MySQL setup and kept SQL Server LocalDB.</td>
+        </tr>
+        <tr>
+            <td>Wrong namespace in DbContext</td>
+            <td>DbContext used placeholder namespace <code>YourProjectName.Data</code>.</td>
+            <td>Changed namespace to <code>RazorDemo.Data</code>.</td>
+        </tr>
+        <tr>
+            <td><code>DbSet&lt;User&gt;</code> inside constructor</td>
+            <td>The property was placed inside the constructor body, causing C# syntax errors.</td>
+            <td>Moved it to class level.</td>
+        </tr>
+        <tr>
+            <td><code>Users</code> DbSet warning</td>
+            <td>Identity already has a built-in <code>Users</code> DbSet.</td>
+            <td>Renamed custom table property to <code>AppUsers</code>.</td>
+        </tr>
+        <tr>
+            <td>Wrong namespaces in auth page model</td>
+            <td><code>Auth.cshtml.cs</code> used <code>YourProjectName</code> and <code>MyApp.Namespace</code>.</td>
+            <td>Changed to <code>RazorDemo.Pages</code>, <code>RazorDemo.Data</code>, and <code>RazorDemo.Models</code>.</td>
+        </tr>
+        <tr>
+            <td>Auth page blank</td>
+            <td><code>Auth.cshtml</code> originally had no visible form content.</td>
+            <td>Added login and register form markup.</td>
+        </tr>
+        <tr>
+            <td>Login/Register links did not show expected page</td>
+            <td>Navbar linked to <code>/Auth</code> or Identity pages while the edited screen was <code>/Login</code>.</td>
+            <td>Changed navbar to use <code>/Login</code>.</td>
+        </tr>
+        <tr>
+            <td><code>Login.cshtml</code> had no working model</td>
+            <td><code>Login.cshtml.cs</code> used the wrong namespace and had no login/register handlers.</td>
+            <td>Deleted the broken page model and made <code>Login.cshtml</code> use <code>RazorDemo.Pages.AuthModel</code>.</td>
+        </tr>
+        <tr>
+            <td>Form values might not bind correctly</td>
+            <td>Input names used <code>Email</code>, <code>Password</code>, etc. while handlers expected lowercase parameter names.</td>
+            <td>Changed input names to <code>email</code>, <code>password</code>, <code>fullName</code>, and <code>confirmPassword</code>.</td>
+        </tr>
+        <tr>
+            <td>Error messages did not show</td>
+            <td>Errors were added with custom keys, but the view displayed only model-level summary.</td>
+            <td>Changed errors to use <code>ModelState.AddModelError(string.Empty, ...)</code>.</td>
+        </tr>
+        <tr>
+            <td>Data Protection startup errors</td>
+            <td>ASP.NET tried to read old protected keys and write to Windows Event Log without permission.</td>
+            <td>Added local Data Protection key storage and console/debug logging.</td>
+        </tr>
+        <tr>
+            <td>Database table may not exist</td>
+            <td>No migrations were present and <code>dotnet ef</code> was not installed.</td>
+            <td>Added startup <code>EnsureCreated()</code> plus explicit SQL to create <code>AppUsers</code> if missing.</td>
+        </tr>
+        <tr>
+            <td>Localhost port confusion</td>
+            <td>The launch profile uses <code>http://localhost:5146</code>, not always port 5000.</td>
+            <td>Recommended opening <code>http://localhost:5146/Login</code>.</td>
+        </tr>
+        <tr>
+            <td>Normal build sometimes failed with access denied</td>
+            <td><code>bin/Debug/net9.0</code> was locked by running dotnet processes or IDE tooling.</td>
+            <td>Verified builds using temporary output folder <code>.codex-build</code>.</td>
+        </tr>
+    </table>
+
+    <h2>Important Current Configuration</h2>
+    <ul>
+        <li>Database connection: <code>Server=(localdb)\mssqllocaldb;Database=LoginAppDb;Trusted_Connection=True;MultipleActiveResultSets=true</code></li>
+        <li>Login/register page: <code>/Login</code></li>
+        <li>Recommended localhost URL: <code>http://localhost:5146/Login</code></li>
+        <li>Custom auth cookie scheme: <code>AppCookie</code></li>
+        <li>Custom user table: <code>AppUsers</code></li>
+        <li>Data Protection keys folder: <code>App_Data/DataProtectionKeys</code></li>
+    </ul>
+
+    <h2>Commands Used For Checking</h2>
+    <ul>
+        <li><code>dotnet build --no-restore -o .codex-build</code></li>
+        <li><code>dotnet run --no-build --project RazorDemo.csproj --no-launch-profile</code></li>
+        <li><code>dotnet .codex-build\RazorDemo.dll</code></li>
+        <li><code>dotnet ef migrations list --no-build</code> failed because <code>dotnet-ef</code> is not installed.</li>
+    </ul>
+
+    <h2>Status</h2>
+    <p><span class="ok">Build status:</span> The project builds successfully with <code>dotnet build --no-restore -o .codex-build</code>.</p>
+    <p><span class="warn">Remaining caution:</span> Passwords are currently stored as plain text in <code>PasswordHash</code>. This is acceptable only for a simple school/demo project. A real app should use password hashing.</p>
+    <p><span class="warn">Remaining caution:</span> <code>EnsureCreated()</code> and raw SQL table creation are simple local-development fixes. A cleaner production setup should use EF migrations.</p>
+
+    <h2>Next Recommended Steps</h2>
+    <ol>
+        <li>Run the app using the Visual Studio profile or <code>dotnet run</code>.</li>
+        <li>Open <code>http://localhost:5146/Login</code>.</li>
+        <li>Register a test account.</li>
+        <li>Log in with the same email and password.</li>
+        <li>If the page still errors, copy the exact localhost error text or screenshot and check the SQL Server LocalDB status.</li>
+    </ol>
+</body>
+</html>

@@ -1,0 +1,83 @@
+@page
+@model RazorDemo.Pages.AuthModel
+@{
+    ViewData["Title"] = "Authentication";
+}
+
+<div class="auth-body">
+    <div class="auth-card" id="authCard">
+        <div id="loginForm">
+            <h2 class="auth-title">Sign In</h2>
+            <p class="auth-subtitle">Sign in to your account to continue</p>
+
+            <form method="post" asp-page-handler="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="btn btn-cyan-auth">Sign In</button>
+            </form>
+
+            <p class="text-center text-muted mt-4 small">
+                Don't have an account? <a href="javascript:void(0)" onclick="toggleAuth()" class="text-info text-decoration-none fw-bold">Sign up</a>
+            </p>
+        </div>
+
+        <div id="registerForm" style="display: none;">
+            <h2 class="auth-title">Create Account</h2>
+            <p class="auth-subtitle">Sign up to get started</p>
+
+            @if (TempData["SuccessMessage"] is string successMessage)
+            {
+                <div class="alert alert-success">@successMessage</div>
+            }
+
+            <form method="post" asp-page-handler="Register">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" name="fullName" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm your password" required>
+                </div>
+
+                <button type="submit" class="btn btn-cyan-auth">Create Account</button>
+            </form>
+
+            <p class="text-center text-muted mt-4 small">
+                Already have an account? <a href="javascript:void(0)" onclick="toggleAuth()" class="text-info text-decoration-none fw-bold">Sign in</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleAuth() {
+        const login = document.getElementById("loginForm");
+        const register = document.getElementById("registerForm");
+
+        if (login.style.display === "none") {
+            login.style.display = "block";
+            register.style.display = "none";
+        } else {
+            login.style.display = "none";
+            register.style.display = "block";
+        }
+    }
+</script>
