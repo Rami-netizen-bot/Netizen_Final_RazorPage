@@ -1,0 +1,90 @@
+@page "{id:int}"
+@model RazorDemo.Pages.EditUserModel
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<div class="main-wrapper pt-5">
+    <div class="container">
+        <!-- Breadcrumb link to return to the Admin Dashboard -->
+        <div class="mb-5">
+            <a asp-page="/Dashboard" class="text-blue text-decoration-none small fw-bold">
+                <i class="bi bi-arrow-left me-1"></i> BACK TO DASHBOARD
+            </a>
+            <h1 class="hero-title mt-3">Edit <span class="text-blue">User</span></h1>
+            <p class="hero-subtitle">Update account details for user ID: #@Model.UserToEdit.Id</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="learning-card-box">
+                    <!-- Edit form: Posts back to EditUserModel.OnPostAsync -->
+                    <form method="post">
+                        <!-- Hidden field to preserve the User ID during the POST request -->
+                        <input type="hidden" asp-for="UserToEdit.Id" />
+                        
+                        <div class="row">
+                            <!-- Input for Full Name -->
+                            <div class="col-md-6 mb-4">
+                                <label class="box-label">FULL NAME</label>
+                                <input type="text" asp-for="UserToEdit.Name" class="form-control bg-dark border-secondary text-white p-3" placeholder="Full Name" required />
+                            </div>
+                            <!-- Input for Email Address -->
+                            <div class="col-md-6 mb-4">
+                                <label class="box-label">EMAIL ADDRESS</label>
+                                <input type="email" asp-for="UserToEdit.Email" class="form-control bg-dark border-secondary text-white p-3" placeholder="Email" required />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Dropdown for Gender Selection -->
+                            <div class="col-md-6 mb-4">
+                                <label class="box-label">GENDER</label>
+                                <select asp-for="UserToEdit.Gender" class="form-control bg-dark border-secondary text-white p-3">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <!-- Dropdown for Role Selection (Admin, User, Student) -->
+                            <div class="col-md-6 mb-4">
+                                <label class="box-label">ROLE</label>
+                                <select asp-for="UserToEdit.Role" class="form-control bg-dark border-secondary text-white p-3">
+                                    <option value="Student">Student</option>
+                                    <option value="User">User</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Textarea for Admin-only remarks or notes -->
+                        <div class="mb-4">
+                            <label class="box-label">REMARK / NOTES</label>
+                            <textarea asp-for="UserToEdit.Remark" class="form-control bg-dark border-secondary text-white p-3" rows="3" placeholder="Add any admin notes here..."></textarea>
+                        </div>
+
+                        <!-- Action Buttons: Save or Cancel -->
+                        <div class="d-flex gap-3 mt-4">
+                            <button type="submit" class="btn btn-cyan px-5 py-3">SAVE CHANGES</button>
+                            <a asp-page="/Dashboard" class="btn btn-outline-secondary px-5 py-3">CANCEL</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Local styles for improving the form input focus and placeholder appearance -->
+    <style>
+        .form-control:focus {
+            background-color: #1a2a4a !important;
+            border-color: #00d2ff !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+        .form-control::placeholder {
+            color: #4a5568;
+        }
+    </style>
+}

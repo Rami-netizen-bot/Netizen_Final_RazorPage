@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DEel2g6JTAI=",
+  "dgSpecHash": "hrD+ExzjGKg=",
   "success": true,
   "projectFilePath": "D:\\Learning coputer IT\\Netizen_Final\\RazorDemo\\RazorDemo.csproj",
   "expectedPackageFiles": [
@@ -57,6 +57,8 @@
     "C:\\Users\\msi\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\msi\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\msi\\.nuget\\packages\\mono.texttemplating\\3.0.0\\mono.texttemplating.3.0.0.nupkg.sha512",
+    "C:\\Users\\msi\\.nuget\\packages\\mysqlconnector\\2.4.0\\mysqlconnector.2.4.0.nupkg.sha512",
+    "C:\\Users\\msi\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\9.0.0\\pomelo.entityframeworkcore.mysql.9.0.0.nupkg.sha512",
     "C:\\Users\\msi\\.nuget\\packages\\system.clientmodel\\1.0.0\\system.clientmodel.1.0.0.nupkg.sha512",
     "C:\\Users\\msi\\.nuget\\packages\\system.codedom\\6.0.0\\system.codedom.6.0.0.nupkg.sha512",
     "C:\\Users\\msi\\.nuget\\packages\\system.collections.immutable\\7.0.0\\system.collections.immutable.7.0.0.nupkg.sha512",

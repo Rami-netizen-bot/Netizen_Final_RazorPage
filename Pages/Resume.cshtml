@@ -1,4 +1,51 @@
-﻿@page
-@model MyApp.Namespace.ResumeModel
+@page
+@model RazorDemo.Pages.ResumeModel
 @{
+    ViewData["Title"] = "Resume";
 }
+
+<div class="resume-wrapper">
+    <div class="resume-document">
+        <header class="resume-header">
+            <h1 class="resume-name">Ramy</h1>
+            <p class="resume-subtitle">STUDENT OF TEACHER SYMON</p>
+            <p class="resume-contact">
+                030805ramy@gmail.com &nbsp;&nbsp;||&nbsp;&nbsp; 069910033 &nbsp;&nbsp;||&nbsp;&nbsp; Phnom Penh, Cambodia
+            </p>
+        </header>
+
+        <div class="resume-body row mt-5">
+            <div class="col-md-5 resume-left">
+                <div class="resume-section">
+                    <h2 class="resume-section-title">Technical Skills</h2>
+                    <div class="resume-skills">
+                        <span class="skill-chip">Flutter</span>
+                        <span class="skill-chip">Figma</span>
+                        <span class="skill-chip">HTML</span>
+                        <span class="skill-chip">CSS</span>
+                        <span class="skill-chip">JQuery</span>
+                        <span class="skill-chip">Bootstrap</span>
+                        <span class="skill-chip">Git</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 resume-right">
+                <div class="resume-section">
+                    <h2 class="resume-section-title">Summary</h2>
+                    <p class="resume-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque praesentium ratione sed in quis autem et placeat vel?
+                    </p>
+                </div>
+                
+                <div class="resume-section mt-5">
+                    <h2 class="resume-section-title">More</h2>
+                    <ul class="resume-list">
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

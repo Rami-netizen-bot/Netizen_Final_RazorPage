@@ -1,16 +1,21 @@
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using RazorDemo.Models;
+using RazorDemo.Model;
 
 namespace RazorDemo.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
 
-        public DbSet<User> AppUsers { get; set; }
+        public DbSet<AppUsers> AppUsers { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<AppUsers>().ToTable("users");
+        }
     }
 }
