@@ -1,10 +1,10 @@
-@page
-@model IndexModel
+﻿@page
+@model HomeModel
 @{
     ViewData["Title"] = "Home";
 }
-<link rel="stylesheet" href="~/css/home.css" />
-
+<!-- Font Awesome 6 for high-quality icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <div class="main-wrapper">
     <!-- Hero Section -->
     <section class="hero-section container">
@@ -18,23 +18,30 @@
                     with C# and Razor Pages
                 </h1>
                 <p class="hero-subtitle">
-                    It is mini project for final exam of Web Programming course. This project is built using Razor Pages
-                    in ASP.NET Core, showcasing a simple yet effective way to create dynamic web applications with C#.
-                    The homepage features a hero section with a compelling title, a brief description, and
-                    call-to-action buttons to encourage users to explore courses and projects.
-                </p>
+    lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.                 </p>
                 <div class="hero-btns">
-                    <a href="#" class="btn-cyan">Browse Courses</a>
-                    <a href="#" class="btn-outline">View Projects</a>
+                    <!-- GitHub Button -->
+                    <a href="https://github.com/Rami-netizen-bot/Netizen_Final_RazorPage.git" class="btn-cyan">
+                        <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                    
+                    <!-- More Social Media Button -->
+                    <a href="#" class="btn-outline">
+                        <i class="fa-solid fa-share-nodes"></i> Follow Me
+                    </a>
                 </div>
             </div>
 
             <!-- Right Content (Logo) -->
             <div class="col-lg-5 text-center d-none d-lg-block">
                 <div class="hero-logo-wrapper">
-                    <img src="~/images/logo.png" alt="Netizen Logo" class="img-fluid hero-logo" asp-append-version="true">
+                    <img src="~/images/logo.png" alt="Netizen Logo" class="img-fluid hero-logo"
+                         asp-append-version="true">
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Project Technologies Section -->
+ 
 </div>

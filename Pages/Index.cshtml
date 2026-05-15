@@ -3,47 +3,42 @@
 @{
     ViewData["Title"] = "Home";
 }
-<link rel="stylesheet" href="~/css/home.css" />
-
-<!-- Main wrapper for the entire home page content -->
+<!-- Font Awesome 6 for high-quality icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <div class="main-wrapper">
-    <!-- Hero Section: The primary visual area with the title and logo -->
+    <!-- Hero Section -->
     <section class="hero-section container">
         <div class="row align-items-center">
-            
-            <!-- Left Column: Contains text, title, and buttons -->
+            <!-- Left Content -->
             <div class="col-lg-7">
-                <!-- Decorative badge for the course project info -->
                 <div class="badge-pill">Final Exam Project Razor Page .Net C#</div>
-                
                 <h1 class="hero-title">
                     Learn to build <br />
                     <span class="text-blue">real-world</span> websites <br />
                     with C# and Razor Pages
                 </h1>
-                
                 <p class="hero-subtitle">
-                    It is mini project for final exam of Web Programming course. This project is built using Razor Pages
-                    in ASP.NET Core, showcasing a simple yet effective way to create dynamic web applications with C#.
-                    The homepage features a hero section with a compelling title, a brief description, and
-                    call-to-action buttons to encourage users to explore courses and projects.
-                </p>
-                
-                <!-- Action buttons for navigation -->
-                <div class="hero-btns">
-                    <a href="#" class="btn-cyan">Browse Courses</a>
-                    <a href="#" class="btn-outline">View Projects</a>
-                </div>
+lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.                </p>
+              <div class="hero-btns">
+    <!-- GitHub Button -->
+    <a href="https://github.com/Rami-netizen-bot/Netizen_Final_RazorPage.git" class="btn-cyan">
+        <i class="fa-brands fa-github"></i> GitHub
+    </a>
+    
+    <!-- More Social Media Button -->
+    <a href="#" class="btn-outline">
+        <i class="fa-solid fa-share-nodes"></i> Follow Me
+    </a>
+</div>
             </div>
 
-            <!-- Right Column: Contains the animated brand logo -->
+            <!-- Right Content (Logo) -->
             <div class="col-lg-5 text-center d-none d-lg-block">
                 <div class="hero-logo-wrapper">
-                    <!-- The logo image with a floating animation defined in site.css -->
-                    <img src="~/images/logo.png" alt="Netizen Logo" class="img-fluid hero-logo" asp-append-version="true">
+                    <img src="~/images/logo.png" alt="Netizen Logo" class="img-fluid hero-logo"
+                         asp-append-version="true">
                 </div>
             </div>
-            
         </div>
     </section>
 </div>
