@@ -1,0 +1,65 @@
+﻿@page
+@model MyApp.Namespace.PorfolioModel
+@{
+    ViewData["Title"] = "Portfolio";
+}
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="portfolio-card-frame">
+    <div class="portfolio-layout-grid">
+
+        <div class="profile-photo-container">
+            <img src="~/images/photo_2026-05-18_00-30-22.jpg" alt="Profile Photo" class="profile-photo"
+                 asp-append-version="true" />
+        </div>
+
+        <div>
+            <h1 class="column-title-main">Hello!</h1>
+
+            <p class="body-text-muted">
+                My name is @Model.Name. @Model.MyStory
+            </p>
+            <p class="body-text-muted">
+                @Model.CurrentFocus
+            </p>
+
+            <h2 class="section-heading-bold">Education</h2>
+            <div class="timeline-item">
+                <p class="timeline-date">2012 - 2016 Studied at @Model.Education.Primary</p>
+                <p class="timeline-date">2017 - 2023 Studied at @Model.Education2.HightSchool</p>
+                <p class="timeline-date">2024 - Present Studying at @Model.Education3.University</p>
+                <p class="timeline-desc">@Model.Education.Degree</p>
+            </div>
+        </div>
+
+        <div>
+            <h2 class="section-heading-bold" style="margin-top: 0;">Skills</h2>
+
+            <div class="skills-icon-grid">
+                <div class="skill-icon-box">C#</div>
+                <div class="skill-icon-box">Mobile</div>
+                <div class="skill-icon-box">Web</div>
+                @* <div class="skill-icon-box">SQL</div> *@
+                <div class="skill-icon-box">Flutter</div>
+                <div class="skill-icon-box">Dart</div>
+            </div>
+
+            <h2 class="section-heading-bold">Experience</h2>
+            @foreach (var skill in Model.Skills)
+            {
+                <div class="timeline-item">
+                    <p class="timeline-date">@skill.Category</p>
+                    <p class="timeline-desc">@skill.Technologies</p>
+                </div>
+            }
+        </div>
+
+    </div>
+
+    <footer class="portfolio-footer-row">
+        <span class="footer-contact-link"><i class="fa-solid fa-phone"></i> @Model.Contact.Phone</span>
+        <span class="footer-contact-link"><i class="fa-solid fa-envelope"></i> @Model.Contact.Email</span>
+        <a href="@Model.Contact.FacebookUrl"  class="footer-contact-link"><i class="fa-brands fa-facebook"></i> Facebook Profile</a>
+    </footer>
+</div>

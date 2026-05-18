@@ -52,7 +52,6 @@ body {
   --focus-bg: rgba(30, 41, 59, 0.5);
 }
 
-
 /* MAIN CONTENT WRAPPER: Handles global background and spacing */
 .main-wrapper {
   background: radial-gradient(circle at top right, #102a43, #050a18);
@@ -79,6 +78,17 @@ body {
   font-weight: 800;
   line-height: 1.2;
   margin: 20px 0;
+}
+
+.search-box .form-control::placeholder {
+  color: var(--accent-cyan) !important;
+  opacity: 3 !important;
+}
+
+.search-box .form-control:focus {
+  background-color: var(--focus-bg) !important;
+  border-color: var(--accent-cyan) !important;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.2) !important;
 }
 
 .text-blue {
@@ -277,7 +287,6 @@ body {
 
 /* Register Button (Styled as GitHub Button) */
 .register-btn {
- 
   color: #ffffff !important;
   font-weight: bold;
   font-size: 0.85rem;
@@ -292,10 +301,9 @@ body {
 }
 
 .register-btn:hover {
-   background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.05);
   border-color: #00d2ff;
   color: #00d2ff !important;
- 
 }
 
 .auth-page {
@@ -451,7 +459,7 @@ body {
 }
 
 /* Ensure small text and muted labels in auth forms are white */
-.auth-card .text-muted, 
+.auth-card .text-muted,
 .auth-container .text-muted,
 .auth-card small,
 .auth-container small {
@@ -495,8 +503,8 @@ body {
 
 /* Fix for browser autofill background */
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #081225 inset !important;
   -webkit-text-fill-color: white !important;
@@ -708,7 +716,7 @@ input:-webkit-autofill:active {
   color: #ffffff;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .contact-container {
     padding: 30px;
   }
@@ -775,11 +783,10 @@ input:-webkit-autofill:active {
 }
 
 .btn-gradient-submit {
-  
-  color:  #fff !important;
-  border: 1px solid rgb(80, 93, 93) !important;  
+  color: #fff !important;
+  border: 1px solid rgb(80, 93, 93) !important;
   padding: 16px;
-  font-size: 1.1rem;  
+  font-size: 1.1rem;
   font-weight: 600;
   border-radius: 8px;
   transition:
@@ -788,7 +795,7 @@ input:-webkit-autofill:active {
 }
 
 .btn-gradient-submit:hover {
-  color:  white !important;
+  color: white !important;
   border-color: var(--accent-cyan) !important;
   transform: translateY(-2px);
   transition: all 0.3s ease;
@@ -819,7 +826,7 @@ input:-webkit-autofill:active {
   position: absolute;
   top: 30px;
   right: 30px;
-  color: #ff4d4d; /* Red color as requested */
+  color: var(--accent-cyan) !important ; /* Red color as requested */
   font-size: 1.6rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -829,7 +836,7 @@ input:-webkit-autofill:active {
 
 .resume-download-btn:hover {
   transform: scale(1.1);
-  color: #ff6b6b;
+  color: var(--accent-cyan) !important  ;
   text-shadow: 0 0 15px rgba(255, 77, 77, 0.5);
 }
 
@@ -877,9 +884,13 @@ input:-webkit-autofill:active {
 .resume-name {
   font-size: 3rem;
   font-weight: 800;
-  color: #ffffff;
   margin-bottom: 5px;
   letter-spacing: -1px;
+  background: linear-gradient(to right, #ffffff, var(--accent-cyan));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .resume-subtitle {
@@ -911,7 +922,6 @@ input:-webkit-autofill:active {
   gap: 10px;
 }
 
-
 .skill-chip {
   border: 1px solid gray !important;
   color: #a0aec0;
@@ -920,7 +930,7 @@ input:-webkit-autofill:active {
   font-size: 0.85rem;
 }
 
-.skill-chip:hover{
+.skill-chip:hover {
   border-color: var(--accent-cyan) !important;
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
@@ -998,7 +1008,8 @@ input:-webkit-autofill:active {
   align-items: stretch;
 }
 
-.profile-card, .details-card {
+.profile-card,
+.details-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 24px;
@@ -1171,5 +1182,187 @@ input:-webkit-autofill:active {
 @media (max-width: 640px) {
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+}
+/* --- Centered Paper Wrapper (Matches the photo's aspect ratio) --- */
+.portfolio-card-frame {
+  max-width: 1100px;
+  margin: 60px auto;
+  background-color: #0d1527; /* Slightly lighter dark blue card background */
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* --- The 3-Column Grid System --- */
+.portfolio-layout-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr 280px; /* Left column, elastic center, right column */
+  gap: 40px;
+  align-items: start;
+}
+
+/* --- Column 1: Profile Image Area --- */
+.profile-photo-container {
+  background-color: #16223f;
+  border-radius: 20px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* This keeps the zoomed image perfectly inside the rounded card corners */
+  border: 2px solid transparent; /* Keeps things stable */
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.profile-photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  /* Smoother animation curve */
+}
+
+/* Hover effects applied to the elements together */
+.profile-photo-container:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(0, 180, 216, 0.4); /* Sharp neon accent line */
+  cursor: pointer;
+  /* Smooth glow effect */
+}
+
+.profile-photo-container:hover img {
+  transform: translateX(1.03);
+  transition: transform 0.4s ease out; /* Tiny, smooth cinematic zoom */
+}
+.profile-photo-placeholder {
+  color: #8492a6;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* --- General Column Formatting --- */
+.column-title-main {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  letter-spacing: -1px;
+  background: linear-gradient(to left, cyan, var(--accent-cyan), #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-heading-bold {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 30px 0 15px 0;
+  letter-spacing: 0.5px;
+  text-decoration: underline;
+  background: linear-gradient(to right, #ffffff, var(--accent-cyan));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.section-heading-bold h2 {
+  color: transparent;
+}
+
+.body-text-muted {
+  color: #a0aec0;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+.text-th {
+  background-color: transparent !important; /* 2. Apply your accent cyan variable color */
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  font-weight: 600;
+}
+.timeline-item {
+  margin-bottom: 15px;
+}
+.text-th {
+  background: transparent;
+  color: var(--accent-cyan);
+}
+
+.timeline-date {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+}
+
+.timeline-desc {
+  color: #8492a6;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* --- Column 3: Custom Skill Blocks (The "Ps", "Ai" grid) --- */
+.skills-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.skill-icon-box {
+  background-color: #1c2c4f;
+  color: #ffffff;
+  border-radius: 8px;
+  aspect-ratio: 1 / 1; /* Makes them perfect squares */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.skill-icon-box:hover {
+  transform: translateX(1px);
+  transition: all 0.3s ease-out;
+  border: 1px solid var(--accent-cyan);
+  cursor: pointer;
+}
+/* --- Horizontal Footer Links Row --- */
+.portfolio-footer-row {
+  margin-top: 40px;
+  padding-top: 25px;
+  border-top: 1px solid #1c2c4f;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-contact-link {
+  color: #8492a6;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.footer-contact-link i {
+  margin-right: 9px;
+  color: var(--accent-cyan);
+}
+.footer-contact-link:hover {
+  color: var(--accent-cyan);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 992px) {
+  .portfolio-layout-grid {
+    grid-template-columns: 1fr; /* Stacks to a simple single column on tablets/phones */
+  }
+  .profile-photo-container {
+    height: 250px;
   }
 }

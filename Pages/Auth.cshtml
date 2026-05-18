@@ -30,8 +30,10 @@
                 <div class="form-group">
                     <label>Password</label>
                     <div class="input-group">
-                        <input type="password" asp-for="Input.Password" id="loginPassword" placeholder="Enter your password" required style="border-right: none;">
-                        <span class="input-group-text" onclick="togglePasswordVisibility('loginPassword', this)" style="border: 1px solid #1a2a4a; border-left: none; background-color: #081225; color: #a0aec0; cursor: pointer;">
+                        <input type="password" asp-for="Input.Password" id="loginPassword"
+                               placeholder="Enter your password" required style="border-right: none;">
+                        <span class="input-group-text" onclick="togglePasswordVisibility('loginPassword', this)"
+                              style="border: 1px solid #1a2a4a; border-left: none; background-color: #081225; color: #a0aec0; cursor: pointer;">
                             <i class="bi bi-eye-slash"></i>
                         </span>
                     </div>
@@ -70,16 +72,18 @@
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label>Role</label>
-                        <select asp-for="Input.Role" class="form-control" required style="width: 100%; background-color: #081225; border: 1px solid #1a2a4a; border-radius: 8px; color: #ffffff; padding: 11px 12px;">
+                        <select asp-for="Input.Role" class="form-control" required
+                                style="width: 100%; background-color: #081225; border: 1px solid #1a2a4a; border-radius: 8px; color: #ffffff; padding: 11px 12px;">
                             <option value="">Select Role</option>
-                            <option value="Admin">Admin</option>
+                            @* <option value="Admin">Admin</option> *@
                             <option value="User">User</option>
                             <option value="Student">Student</option>
                         </select>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>Gender</label>
-                        <select asp-for="Input.Gender" class="form-control" required style="width: 100%; background-color: #081225; border: 1px solid #1a2a4a; border-radius: 8px; color: #ffffff; padding: 11px 12px;">
+                        <select asp-for="Input.Gender" class="form-control" required
+                                style="width: 100%; background-color: #081225; border: 1px solid #1a2a4a; border-radius: 8px; color: #ffffff; padding: 11px 12px;">
                             <option value="">Select Gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -90,8 +94,10 @@
                 <div class="form-group">
                     <label>Password</label>
                     <div class="input-group">
-                        <input type="password" asp-for="Input.Password" id="regPassword" placeholder="Enter your password" required style="border-right: none;">
-                        <span class="input-group-text" onclick="togglePasswordVisibility('regPassword', this)" style="border: 1px solid #1a2a4a; border-left: none; background-color: #081225; color: #a0aec0; cursor: pointer;">
+                        <input type="password" asp-for="Input.Password" id="regPassword"
+                               placeholder="Enter your password" required style="border-right: none;">
+                        <span class="input-group-text" onclick="togglePasswordVisibility('regPassword', this)"
+                              style="border: 1px solid #1a2a4a; border-left: none; background-color: #081225; color: #a0aec0; cursor: pointer;">
                             <i class="bi bi-eye-slash"></i>
                         </span>
                     </div>
@@ -100,15 +106,18 @@
                 <div class="form-group">
                     <label>Confirm Password</label>
                     <div class="input-group">
-                        <input type="password" name="confirmPassword" id="regConfirmPassword" placeholder="Confirm your password" required style="border-right: none;">
-                        <span class="input-group-text" onclick="togglePasswordVisibility('regConfirmPassword', this)" style="border: 1px solid #1a2a4a; border-left: none; background-color: #081225; color: #a0aec0; cursor: pointer;">
+                        <input type="password" name="confirmPassword" id="regConfirmPassword"
+                               placeholder="Confirm your password" required style="border-right: none;">
+                        <span class="input-group-text" onclick="togglePasswordVisibility('regConfirmPassword', this)"
+                              style="border: 1px solid #1a2a4a; border-left: none; background-color: #081225; color: #a0aec0; cursor: pointer;">
                             <i class="bi bi-eye-slash"></i>
                         </span>
                     </div>
                 </div>
                 <div class="form-group terms-box">
                     <label class="checkbox-container">
-                        <input type="checkbox" required> <span>I agree to the <a href="#" class="forgot-link">Terms and Conditions</a></span>
+                        <input type="checkbox" required> <span>I agree to the <a href="#" class="forgot-link">Terms and
+                        Conditions</a></span>
                     </label>
                 </div>
                 <button type="submit" class="btn-primary-auth">Create Account</button>
@@ -139,7 +148,7 @@
     function togglePasswordVisibility(inputId, btn) {
         const input = document.getElementById(inputId);
         const icon = btn.querySelector('i');
-        
+
         if (input.type === 'password') {
             input.type = 'text';
             icon.classList.remove('bi-eye-slash');

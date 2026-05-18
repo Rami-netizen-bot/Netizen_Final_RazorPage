@@ -12,85 +12,91 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/RazorDemo.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     @* Custom styles for the brand logo and typography *@
     <style>
         .navbar-brand img {
-            filter: drop-shadow(0 0 5px rgba(0, 210, 255, 0.5));
-            transition: transform 0.3s ease;
+        filter: drop-shadow(0 0 5px rgba(0, 210, 255, 0.5));
+        transition: transform 0.3s ease;
         }
+
         .navbar-brand:hover img {
-            transform: rotate(10deg) scale(1.1);
+        transform: rotate(10deg) scale(1.1);
         }
+
         .tracking-wider {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(to right, #ffffff, #a0aec0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(to right, #ffffff, #a0aec0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
 
 <body>
     <header>
-       @* Main navigation bar using custom dark theme styling *@
-       <nav class="navbar navbar-expand-lg custom-navbar">
-    <div class="container">
-        @* Brand section with logo and animated name link *@
-        <a class="navbar-brand d-flex align-items-center" asp-page="/Index">
-            <img src="~/images/logo.png" alt="Netizen Logo" width="40" height="40" class="me-2" asp-append-version="true">
-            <span class="fw-bold text-white tracking-wider" style="letter-spacing: 2px;">NETIZEN</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active-pill" asp-page="/Index">HOME</a>
-                </li>
-                
-                @* Links only visible to authenticated (logged in) users *@
+        @* Main navigation bar using custom dark theme styling *@
+        <nav class="navbar navbar-expand-lg custom-navbar">
+            <div class="container">
+                @* Brand section with logo and animated name link *@
+                <a class="navbar-brand d-flex align-items-center" asp-page="/Index">
+                    <img src="~/images/logo.png" alt="Netizen Logo" width="40" height="40" class="me-2"
+                         asp-append-version="true">
+                    <span class="fw-bold text-white tracking-wider" style="letter-spacing: 2px;">NETIZEN</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active-pill" asp-page="/Index">HOME</a>
+                        </li>
+
+                        @* Links only visible to authenticated (logged in) users *@
+                        @if (User.Identity?.IsAuthenticated ?? false)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link active-pill" asp-page="/About">ABOUT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active-pill" asp-page="/Contact">CONTACT</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active-pill" asp-page="/Resume">RESUME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active-pill" asp-page="/Porfolio">PORTFOLIO</a>
+                            </li>
+
+                            @* Dashboard link restricted to Admin role *@
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link active-pill" asp-page="/Dashboard">DASHBOARD</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+
+            @* Authentication buttons (Login/Register or User Name/Logout) *@
+            <div class="d-flex align-items-center auth-buttons">
                 @if (User.Identity?.IsAuthenticated ?? false)
                 {
-                    <li class="nav-item">
-                        <a class="nav-link active-pill" asp-page="/About">ABOUT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active-pill" asp-page="/Contact">CONTACT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active-pill" asp-page="/Resume">RESUME</a>
-                    </li>
-                    
-                    @* Dashboard link restricted to Admin role *@
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link active-pill" asp-page="/Dashboard">DASHBOARD</a>
-                        </li>
-                    }
+                    <span class="navbar-text text-white me-3">Hello! @User.Identity.Name</span>
+                    <form asp-page="/Login" asp-page-handler="Logout" method="post">
+                        <button type="submit" class="btn register-btn">LOGOUT</button>
+                    </form>
                 }
-            </ul>
-        </div>
-    </div>
-    
-    @* Authentication buttons (Login/Register or User Name/Logout) *@
-    <div class="d-flex align-items-center auth-buttons">
-        @if (User.Identity?.IsAuthenticated ?? false)
-        {
-            <span class="navbar-text text-white me-3">@User.Identity.Name</span>
-            <form asp-page="/Login" asp-page-handler="Logout" method="post">
-                <button type="submit" class="btn register-btn">LOGOUT</button>
-            </form>
-        }
-        else
-        {
-            <a asp-page="/Login" asp-route-action="login" class="nav-link login-link">LOGIN</a>
-            <a asp-page="/Login" asp-route-action="register" class="btn register-btn">REGISTER</a>
-        }
-    </div>
-</nav>
+                else
+                {
+                    <a asp-page="/Login" asp-route-action="login" class="nav-link login-link">LOGIN</a>
+                    <a asp-page="/Login" asp-route-action="register" class="btn register-btn">REGISTER</a>
+                }
+            </div>
+        </nav>
     </header>
 
     @* Main content area where individual pages are rendered *@
