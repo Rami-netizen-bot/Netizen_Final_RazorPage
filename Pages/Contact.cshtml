@@ -1,4 +1,60 @@
-﻿@page
-@model MyApp.Namespace.ContactModel
+@page
+@model RazorDemo.Pages.ContactModel
 @{
+    ViewData["Title"] = "Contact Us";
 }
+
+<div class="contact-wrapper">
+    <div class="contact-container row mx-0">
+        <div class="contact-info col-md-5">
+            <h1 class="contact-title">Contact Me</h1>
+            <p class="contact-desc">
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit auctor dui, sed efficitur ligula. Curabitur at felis ac nisl convallis commodo.
+            </p>
+
+            <div class="contact-detail">
+                <i class="bi bi-envelope icon-orange"></i>
+                <span>ramyman030805@gmail.com</span>
+            </div>
+            
+            <div class="contact-detail">
+                <i class="bi bi-house icon-orange"></i>
+                <span>Phnom Penh Mean Chey<br>Cambodia</span>
+            </div>
+            
+            <div class="contact-detail">
+                <i class="bi bi-telephone icon-orange"></i>
+                <span>069 91 00 33</span>
+            </div>
+        </div>
+
+        <div class="contact-form-wrapper col-md-7">
+            @if (!string.IsNullOrEmpty(Model.StatusMessage))
+            {
+                <div class="alert @(Model.StatusMessage.StartsWith("Error") ? "alert-danger" : "alert-success")" role="alert">
+                    @Model.StatusMessage
+                </div>
+            }
+
+            <form class="contact-form" method="post">
+                
+                <div class="mb-3 input-wrap">
+                    <input type="text" asp-for="Name" class="form-control custom-input" placeholder="Name" required>
+                    <span asp-validation-for="Name" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3 input-wrap">
+                    <input type="email" asp-for="Email" class="form-control custom-input" placeholder="Email" required>
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3 input-wrap">
+                    <textarea asp-for="Message" class="form-control custom-input" rows="2" placeholder="Message" required></textarea>
+                    <span asp-validation-for="Message" class="text-danger small"></span>
+                </div>
+
+                <button type="submit" class="btn btn-gradient-submit w-100">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

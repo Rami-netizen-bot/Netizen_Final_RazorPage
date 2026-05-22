@@ -40,6 +40,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Learning coputer IT/Netizen_Final/RazorDemo/Pages/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learning coputer IT/Netizen_Final/RazorDemo/Pages/EditUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Learning coputer IT/Netizen_Final/RazorDemo/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,6 +62,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Learning coputer IT/Netizen_Final/RazorDemo/Pages/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Learning coputer IT/Netizen_Final/RazorDemo/Pages/Porfolio.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9yZm9saW8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Learning coputer IT/Netizen_Final/RazorDemo/Pages/Privacy.cshtml]

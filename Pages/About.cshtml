@@ -1,4 +1,65 @@
-﻿@page
-@model MyApp.Namespace.AboutModel
+@page
+@model RazorDemo.Pages.AboutModel
 @{
+    ViewData["Title"] = "About Us";
 }
+
+<div class="about-container mt-2 mb-2"> 
+    <section class="text-center mb-2">
+        <h1>About Me</h1>
+    </section>
+    <div class="portfolio-container">
+        <!-- Left Side: Profile Card -->
+        <section class="profile-card">
+            <img src="/images/photo_2025-10-31_11-27-40.jpg" alt="Ramy Man" class="profile-img">
+            <h1>Ramy Man</h1>
+            <p class="subtitle">Student of Computer Sciences</p>
+            
+            <div class="tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JAVASCRIPT</span>
+                <span>Flutter / FlutterFlow</span>
+            </div>
+
+            <div class="links">
+                <div class="link-item">ramyman030805@gmail.com</div>
+                <div class="link-item">069 91 00 33</div>
+                <div class="link-item">Facebook <a href="#"></a></div>
+            </div>
+        </section>
+
+        <!-- Right Side: Details Card -->
+        <section class="details-card">
+            <h2>My Story</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            </p>
+            
+            <div class="focus-box">
+                <h3>Current Focus</h3>
+                <p>lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-tile">
+                    <h4>Frontend Skills</h4>
+                    <p>HTML, CSS, Bootstrap, JQuery</p>
+                </div>
+                <div class="skill-tile">
+                    <h4>Backend Skills</h4>
+                    <p>MySQL, PHP, .NET Core</p>
+                </div>
+                <div class="skill-tile">
+                    <h4>Mobile App Skills</h4>
+                    <p>Flutter, Dart, Firebase</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Optional: Footer section if still needed, but styled subtly -->
+    <!-- <section class="about-footer text-center mx-auto mt-5">
+        <a href="/Contact" class="btn btn-get-in-touch">Get In Touch</a>
+    </section> -->
+</div>

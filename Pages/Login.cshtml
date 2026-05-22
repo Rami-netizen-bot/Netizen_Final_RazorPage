@@ -2,66 +2,115 @@
 @model RazorDemo.Pages.AuthModel
 @{
     ViewData["Title"] = "Authentication";
+    var actionParam = HttpContext.Request.Query["action"].ToString() ?? "login";
+    var isRegister = actionParam.ToLower() == "register";
 }
 
 <div class="auth-body">
     <div class="auth-card" id="authCard">
-        <div id="loginForm">
+        @if (TempData["SuccessMessage"] is string successMessage)
+        {
+            <div class="alert alert-success text-center">@successMessage</div>
+        }
+        <div id="loginForm" style="display: @(isRegister ? "none" : "block");">
             <h2 class="auth-title">Sign In</h2>
             <p class="auth-subtitle">Sign in to your account to continue</p>
 
-            <form method="post" asp-page-handler="Login">
+            <form method="post" asp-page-handler="Login" asp-route-action="login">
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
                 <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                    <input type="email" asp-for="Input.Email" class="form-control" placeholder="Enter your email"
+                           required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+                    <div class="input-group">
+                        <input type="password" asp-for="Input.Password" class="form-control"
+                               placeholder="Enter your password" required id="loginPassword" style="border-right: none;">
+                        <span class="input-group-text" onclick="togglePasswordVisibility('loginPassword', this)"
+                              style="border: 1px solid #1a2a4a; border-left: none; background-color: #081225; color: #a0aec0; cursor: pointer;">
+                            <i class="bi bi-eye-slash"></i>
+                        </span>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-cyan-auth">Sign In</button>
             </form>
 
             <p class="text-center text-muted mt-4 small">
-                Don't have an account? <a href="javascript:void(0)" onclick="toggleAuth()" class="text-info text-decoration-none fw-bold">Sign up</a>
+                Don't have an account? <a href="javascript:void(0)" onclick="toggleAuth()"
+                                          class="text-info text-decoration-none fw-bold">Sign up</a>
             </p>
         </div>
 
-        <div id="registerForm" style="display: none;">
+        <div id="registerForm" style="display: @(isRegister ? "block" : "none");">
             <h2 class="auth-title">Create Account</h2>
             <p class="auth-subtitle">Sign up to get started</p>
 
-            @if (TempData["SuccessMessage"] is string successMessage)
-            {
-                <div class="alert alert-success">@successMessage</div>
-            }
-
-            <form method="post" asp-page-handler="Register">
+            <form method="post" asp-page-handler="Register" asp-route-action="register">
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
                 <div class="mb-3">
                     <label class="form-label">Full Name</label>
-                    <input type="text" name="fullName" class="form-control" placeholder="Enter your full name" required>
+                    <input type="text" asp-for="Input.Name" class="form-control" placeholder="Enter your full name"
+                           required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                    <input type="email" asp-for="Input.Email" class="form-control" placeholder="Enter your email"
+                           required>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Role</label>
+                        <select asp-for="Input.Role" class="form-control" required>
+                            <option value="">Select Role</option>
+                            <option value="User">User</option>
+                            <option value="Student">Student</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Gender</label>
+                        <select asp-for="Input.Gender" class="form-control" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+                    <div class="input-group">
+                        <input type="password" asp-for="Input.Password" class="form-control"
+                               placeholder="Enter your password" required id="regPassword" style="border-right: none;">
+                        <span class="input-group-text" onclick="togglePasswordVisibility('regPassword', this)"
+                              style="border: 1px solid #1a2a4a; border-left: none; background-color: #081225; color: #a0aec0; cursor: pointer;">
+                            <i class="bi bi-eye-slash"></i>
+                        </span>
+                    </div>
+                    <small class="text-muted d-block mt-1">Minimum 8 characters</small>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Confirm Password</label>
-                    <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm your password" required>
+                    <div class="input-group">
+                        <input type="password" name="confirmPassword" class="form-control"
+                               placeholder="Confirm your password" required id="regConfirmPassword"
+                               style="border-right: none;">
+                        <span class="input-group-text" onclick="togglePasswordVisibility('regConfirmPassword', this)"
+                              style="border: 1px solid #1a2a4a; border-left: none; background-color: #081225; color: #a0aec0; cursor: pointer;">
+                            <i class="bi bi-eye-slash"></i>
+                        </span>
+                    </div>
+                    <small class="text-muted d-block mt-1">Must match the password above</small>
                 </div>
 
                 <button type="submit" class="btn btn-cyan-auth">Create Account</button>
             </form>
 
-            <p class="text-center text-muted mt-4 small">
-                Already have an account? <a href="javascript:void(0)" onclick="toggleAuth()" class="text-info text-decoration-none fw-bold">Sign in</a>
+            <p class="text-center mt-4 small text-muted">
+                Already have an account? <a href="javascript:void(0)" onclick="toggleAuth()"
+                                            class="text-info text-decoration-none fw-bold">Sign in</a>
             </p>
         </div>
     </div>
@@ -75,9 +124,25 @@
         if (login.style.display === "none") {
             login.style.display = "block";
             register.style.display = "none";
+            history.replaceState(null, '', '?action=login');
         } else {
             login.style.display = "none";
             register.style.display = "block";
+            history.replaceState(null, '', '?action=register');
+        }
+    }
+    function togglePasswordVisibility(inputId, btn) {
+        const input = document.getElementById(inputId);
+        const icon = btn.querySelector('i');
+
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('bi-eye-slash');
+            icon.classList.add('bi-eye');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('bi-eye');
+            icon.classList.add('bi-eye-slash');
         }
     }
 </script>
