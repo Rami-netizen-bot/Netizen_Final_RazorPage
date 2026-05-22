@@ -254,10 +254,36 @@ body {
 
 /* Center items and remove default mobile toggler border */
 .navbar-toggler {
+  color: var(--accent-cyan);
   border: none;
 }
 .navbar-toggler:focus {
   box-shadow: none;
+}
+.navbar-toggler-icon {
+  background-image: none;
+  position: relative;
+}
+.navbar-toggler-icon,
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  display: block;
+  width: 1.5em;
+  height: 2px;
+  border-radius: 999px;
+  background-color: var(--accent-cyan);
+}
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.navbar-toggler-icon::before {
+  top: -7px;
+}
+.navbar-toggler-icon::after {
+  top: 7px;
 }
 /* Container for auth buttons */
 .auth-buttons {
@@ -851,6 +877,8 @@ input:-webkit-autofill:active {
   nav,
   footer,
   .auth-buttons {
+    flex-wrap: nowrap;
+    white-space: nowrap;
     display: none !important;
   }
   .resume-document {
@@ -1366,3 +1394,27 @@ input:-webkit-autofill:active {
     height: 250px;
   }
 }
+@media (max-width: 767.98px) {
+  body {
+    padding-top: 138px;
+  }
+
+  .auth-buttons {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center !important;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .auth-buttons .login-link,
+  .auth-buttons .register-btn {
+    flex: 1 1 0;
+    max-width: 180px;
+    margin-right: 0;
+    text-align: center;
+    padding: 10px 14px !important;
+  }
+}
+
