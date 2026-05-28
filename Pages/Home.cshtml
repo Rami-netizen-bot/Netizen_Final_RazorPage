@@ -11,23 +11,24 @@
         <div class="row align-items-center">
             <!-- Left Content -->
             <div class="col-lg-7">
-                <div class="badge-pill">Final Exam Project Razor Page .Net C#</div>
+                <div class="badge-pill">@Model.BadgeText</div>
                 <h1 class="hero-title">
-                    Learn to build <br />
-                    <span class="text-blue">real-world</span> websites <br />
+                    @Model.MainHeading <br />
+                    <span class="text-blue">@Model.HightlightedText</span> websites <br />
                     with C# and Razor Pages
                 </h1>
                 <p class="hero-subtitle">
-    lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.                 </p>
+                    @Model.Subtitle
+                </p>
                 <div class="hero-btns">
                     <!-- GitHub Button -->
-                    <a href="https://github.com/Rami-netizen-bot/Netizen_Final_RazorPage.git" class="btn-cyan">
+                    <a href="@Model.GitHubUrl" class="btn-cyan">
                         <i class="fa-brands fa-github"></i> GitHub
                     </a>
-                    
+
                     <!-- More Social Media Button -->
-                    <a href="#" class="btn-outline">
-                        <i class="fa-solid fa-share-nodes"></i> Follow Me
+                    <a href="@Model.TelegramUrl" class="btn-outline">
+                        <i class="fa-brands fa-telegram"></i> Telegram
                     </a>
                 </div>
             </div>
@@ -43,5 +44,5 @@
     </section>
 
     <!-- Project Technologies Section -->
- 
+
 </div>

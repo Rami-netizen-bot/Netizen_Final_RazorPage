@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Resume";
 }
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
 <div class="resume-wrapper">
     <div class="resume-document">
@@ -10,10 +11,10 @@
             <i class="bi bi-download"></i>
         </a>
         <header class="resume-header">
-            <h1 class="resume-name">Ramy</h1>
-            <p class="resume-subtitle">STUDENT OF TEACHER SYMON</p>
+            <h1 class="resume-name">@Model.Name</h1>
+            <p class="resume-subtitle">@Model.Title</p>
             <p class="resume-contact">
-                030805ramy@gmail.com &nbsp;&nbsp;||&nbsp;&nbsp; 069910033 &nbsp;&nbsp;||&nbsp;&nbsp; Phnom Penh, Cambodia
+                @Model.Email || @Model.PhoneNumber || @Model.Location
             </p>
         </header>
 
@@ -22,25 +23,19 @@
                 <div class="resume-section">
                     <h2 class="resume-section-title">Technical Skills</h2>
                     <div class="resume-skills">
-                        <span class="skill-chip">Flutter</span>
-                        <span class="skill-chip">Figma</span>
-                        <span class="skill-chip">HTML</span>
-                        <span class="skill-chip">CSS</span>
-                        <span class="skill-chip">JQuery</span>
-                        <span class="skill-chip">Bootstrap</span>
-                        <span class="skill-chip">Git</span>
+                        @foreach (var skill in Model.TechnicalSkill)
+                        {
+                            <span class="skill-chip"> @skill </span>
+                        }
                     </div>
                 </div>
                 <div class="resume-section mt-5">
                     <h2 class="resume-section-title">Soft Skills</h2>
                     <div class="resume-skills">
-                        <span class="skill-chip">Friendly</span>
-                        <span class="skill-chip">Teamwork</span>
-                        <span class="skill-chip">Honesty</span>
-                        <span class="skill-chip">Discipline</span>
-                        <span class="skill-chip">Responsibility</span>
-                        <span class="skill-chip">Communication</span>
-                        <span class="skill-chip">Enthusiasm</span>
+                        @foreach (var soft in Model.Softskill)
+                        {
+                            <span class="skill-chip">@soft</span>
+                        }
                     </div>
                 </div>
             </div>
@@ -48,16 +43,17 @@
                 <div class="resume-section">
                     <h2 class="resume-section-title">Summary</h2>
                     <p class="resume-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque praesentium ratione sed in quis autem et placeat vel?
+                        @Model.Summary
                     </p>
                 </div>
-                
+
                 <div class="resume-section mt-5">
                     <h2 class="resume-section-title">More</h2>
                     <ul class="resume-list">
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                        <li>Lorem ipsum dolor sit amet consectetur.</li>
+                        @foreach (var detail in Model.AdditinalDetails)
+                        {
+                            <li>@detail</li>
+                        }
                     </ul>
                 </div>
             </div>

@@ -1,5 +1,7 @@
 html {
   font-size: 14px;
+  position: relative;
+  min-height: 100%;
 }
 
 @media (min-width: 768px) {
@@ -14,11 +16,6 @@ html {
 .form-control:focus,
 .form-check-input:focus {
   box-shadow: 0 0 0 0.25rem rgba(0, 210, 255, 0.25);
-}
-
-html {
-  position: relative;
-  min-height: 100%;
 }
 
 body {
@@ -137,6 +134,11 @@ body {
   padding: 12px 25px;
   border-radius: 8px;
   text-decoration: none;
+}
+.btn-outline:hover {
+  border: 1px solid var(--accent-cyan);
+  transform: translateY(-2);
+  transition: ease-out;
 }
 
 /* Learning Box Right Side */
@@ -367,6 +369,18 @@ body {
   background-color: #081225;
   border-color: #1a2a4a;
   color: #ffffff;
+}
+
+.auth-card .auth-password-input {
+  border-right: none;
+}
+
+.auth-card .auth-password-toggle {
+  background-color: #081225;
+  border: 1px solid #1a2a4a;
+  border-left: none;
+  color: #a0aec0;
+  cursor: pointer;
 }
 
 .auth-title {
@@ -1417,4 +1431,3 @@ input:-webkit-autofill:active {
     padding: 10px 14px !important;
   }
 }
-

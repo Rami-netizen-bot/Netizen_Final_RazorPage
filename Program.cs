@@ -14,7 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddAuthentication("Cookies")
     .AddCookie("Cookies", options =>
     {
-        options.LoginPath = "/Login"; // Redirects here if not logged in
+        options.LoginPath = "/Auth"; // Redirects here if not logged in
         options.AccessDeniedPath = "/Index";
         options.Cookie.Name = "UserLoginCookie";
     });
