@@ -52,7 +52,6 @@
                         <li class="nav-item">
                             <a class="nav-link active-pill" asp-page="/Index">HOME</a>
                         </li>
-
                         @* Links only visible to authenticated (logged in) users *@
                         @if (User.Identity?.IsAuthenticated ?? false)
                         {
@@ -83,14 +82,14 @@
                     @if (User.Identity?.IsAuthenticated ?? false)
                     {
                         <span class="navbar-text text-white me-3">Hello! @User.Identity.Name</span>
-                        <form asp-page="/Login" asp-page-handler="Logout" method="post" class="m-0">
+                        <form asp-page="/Auth" asp-page-handler="Logout" method="post" class="m-0">
                             <button type="submit" class="btn register-btn">LOGOUT</button>
                         </form>
                     }
                     else
                     {
-                        <a asp-page="/Login" asp-route-action="login" class="nav-link login-link me-2">LOGIN</a>
-                        <a asp-page="/Login" asp-route-action="register" class="btn register-btn">REGISTER</a>
+                        <a asp-page="/Auth" asp-route-action="login" class="nav-link login-link me-2">LOGIN</a>
+                        <a asp-page="/Auth" asp-route-action="register" class="btn register-btn">REGISTER</a>
                     }
                 </div>
             </div>

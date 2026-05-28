@@ -9,11 +9,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RazorDemo.Pages
 {
-    /// <summary>
-    /// Handles User Authentication (Login, Registration, Logout)
-    /// </summary>
     public class AuthModel : PageModel
     {
+        private const string AuthScheme = "Cookies";
         private readonly ApplicationDbContext _db;
 
         public AuthModel(ApplicationDbContext db)
@@ -24,9 +22,6 @@ namespace RazorDemo.Pages
         [BindProperty]
         public InputModel Input { get; set; } = new();
 
-        /// <summary>
-        /// Data Transfer Object for authentication forms
-        /// </summary>
         public class InputModel
         {
             public string? Name { get; set; }
@@ -38,18 +33,10 @@ namespace RazorDemo.Pages
             public string? Role { get; set; }
         }
 
-        public void OnGet()
-        {
-        }
-
-        /// <summary>
-        /// Logic for creating a new user account
-        /// </summary>
         public async Task<IActionResult> OnPostRegisterAsync()
         {
             if (!ModelState.IsValid) return Page();
 
-            // Check if passwords match
             var confirmPassword = Request.Form["confirmPassword"].ToString();
             if (Input.Password != confirmPassword)
             {
@@ -57,7 +44,6 @@ namespace RazorDemo.Pages
                 return Page();
             }
 
-            // Ensure email uniqueness
             var existingUser = await _db.AppUsers.FirstOrDefaultAsync(u => u.Email == Input.Email);
             if (existingUser != null)
             {
@@ -65,62 +51,51 @@ namespace RazorDemo.Pages
                 return Page();
             }
 
-            // Create new user object with default role if none provided
             var user = new AppUsers 
             { 
                 Name = Input.Name, 
                 Email = Input.Email,
                 Gender = Input.Gender,
                 Role = string.IsNullOrEmpty(Input.Role) ? "Student" : Input.Role,
-                PasswordHash = Input.Password // Stored as plain text per project requirement
+                PasswordHash = Input.Password
             };
 
             _db.AppUsers.Add(user);
             await _db.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Registration successful! Please login.";
-            return RedirectToPage("/Login", new { action = "login" });
+            return RedirectToPage("/Auth", new { action = "login" });
         }
 
-        /// <summary>
-        /// Logic for authenticating an existing user
-        /// </summary>
         public async Task<IActionResult> OnPostLoginAsync()
         {
             if (!ModelState.IsValid) return Page();
 
-            // Find user with matching email and password
             var user = await _db.AppUsers.FirstOrDefaultAsync(u => u.Email == Input.Email && u.PasswordHash == Input.Password);
-            
-            if (user != null)
+            if (user == null)
             {
-                // Create identity claims (Name, Email, Role)
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, user.Name ?? user.Email),
-                    new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.Role, user.Role ?? "User")
-                };
-
-                var identity = new ClaimsIdentity(claims, "Cookies");
-                var principal = new ClaimsPrincipal(identity);
-
-                // Sign in the user using Cookie Authentication
-                await HttpContext.SignInAsync("Cookies", principal);
-
-                return RedirectToPage("/Index");
+                ModelState.AddModelError(string.Empty, "Account not found.");
+                return Page();
             }
 
-            ModelState.AddModelError(string.Empty, "This Account is not find .");
-            return Page();
+            // This saves a login cookie in the browser.
+            // Name is used for "Hello! username"; Role is used for Admin pages.
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.Name ?? user.Email ?? "User"),
+                new Claim(ClaimTypes.Role, user.Role ?? "User")
+            };
+
+            var identity = new ClaimsIdentity(claims, AuthScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(AuthScheme, principal);
+            return RedirectToPage("/Index");
         }
 
-        /// <summary>
-        /// Logic for signing out the user
-        /// </summary>
         public async Task<IActionResult> OnPostLogoutAsync()
         {
-            await HttpContext.SignOutAsync("Cookies");
+            await HttpContext.SignOutAsync(AuthScheme);
             return RedirectToPage("/Index");
         }
     }

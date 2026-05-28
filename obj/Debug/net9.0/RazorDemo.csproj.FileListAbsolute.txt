@@ -548,4 +548,5 @@ D:\Learning coputer IT\Netizen_Final\RazorDemo\.codex-build\verify\runtimes\win\
 D:\Learning coputer IT\Netizen_Final\RazorDemo\.codex-build\verify\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\Learning coputer IT\Netizen_Final\RazorDemo\bin\Debug\net9.0\MySqlConnector.dll
 D:\Learning coputer IT\Netizen_Final\RazorDemo\bin\Debug\net9.0\Pomelo.EntityFrameworkCore.MySql.dll
-D:\Learning coputer IT\Netizen_Final\RazorDemo\obj\Debug\net9.0\compressed\utocuj1ctn-a0f51qe2i5.gz
+D:\Learning coputer IT\Netizen_Final\RazorDemo\bin\Debug\net9.0\BCrypt-Net-Next.dll
+D:\Learning coputer IT\Netizen_Final\RazorDemo\obj\Debug\net9.0\compressed\utocuj1ctn-sgb4e5meeq.gz
