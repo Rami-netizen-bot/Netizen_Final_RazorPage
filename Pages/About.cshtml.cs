@@ -25,7 +25,7 @@ namespace RazorDemo.Pages
             ProfileName = "Ramy Man";
             ProfileImage = "/images/photo_2025-10-31_11-27-40.jpg";
             Subtitile = "Student of Computer Sciences";
-            MainTags = new List<string> {"Flutter" , "CSS", "JavaScript", "HTML"};
+            MainTags = new List<string> {"HTML" , "CSS", "JavaScript", "Flutter"};
             Email = "ramyman0308005@gmail.com";
             PhoneNumber = "069910033";
             FacebookUrl = "https://facebook.com";
