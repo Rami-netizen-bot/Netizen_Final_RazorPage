@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic; // Ensures List works
 
@@ -11,13 +12,16 @@ namespace MyApp.Namespace
         public string Title { get; set; } = string.Empty;
         public string MyStory { get; set; } = string.Empty;
         public string CurrentFocus { get; set; } = string.Empty;
+        //Propety
 
-        // 2. Added these missing properties so Contact and Skills are recognized
         public ContactDetails Contact { get; set; } = new ContactDetails();
        public List<SkillGroup> Skills { get; set; } = new List<SkillGroup>();
+    
         public EducationDetails Education { get; set; } = new EducationDetails();
         public EducationDetails2 Education2 { get; set; } = new EducationDetails2();
         public EducationDetails3 Education3 { get; set; } = new EducationDetails3();
+        public EducationDetail1 Education1 {get; set;} = new EducationDetail1();
+        public List<LanguageDetail> Language {get; set;} = new List<LanguageDetail>();
 
         public void OnGet()
         {
@@ -26,7 +30,6 @@ namespace MyApp.Namespace
             MyStory = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
             CurrentFocus = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
           
-            // Works perfectly now
             Contact = new ContactDetails
             {
                 Email = "ramyman030805@gmail.com",
@@ -34,13 +37,15 @@ namespace MyApp.Namespace
                 FacebookUrl = "#"
             };
 
-            // Works perfectly now
+       
             Skills = new List<SkillGroup>
             {
                 new SkillGroup { Category = "Programming Languages", Technologies = "No Experience" },
                 new SkillGroup { Category = "Web Development", Technologies = "No Experience" },
                 new SkillGroup { Category = "Databases", Technologies = "No Experience" }
             };
+           
+            
               Education = new EducationDetails{
                
                 Primary = "Phnom Toch Primary School",
@@ -54,6 +59,17 @@ namespace MyApp.Namespace
                 University = "Chenla University",
                 Year = "2024 - Present",
             };
+            Education1 = new EducationDetail1
+            {
+                Center = "TCEC Center",
+                Year = "2009 - 2017",
+            };
+           Language = new List<LanguageDetail>
+           {
+               new LanguageDetail {Subject = "Khmer", Level = "Monder Toung"},
+               new LanguageDetail {Subject = "English", Level = "Low"},
+           };
+       
 
         }
     }
@@ -87,5 +103,16 @@ namespace MyApp.Namespace
         public string Degree { get; set; } = string.Empty;
         public string University { get; set; } = string.Empty;
         public string Year { get; set; } = string.Empty;
+    }
+    public class EducationDetail1
+    {
+        public string Degree {get; set;} = string.Empty;
+        public string Center {get; set; } = string.Empty;
+        public string Year {get; set;} = string.Empty;
+    }
+    public class LanguageDetail
+    {
+        public string Subject {get; set;} = string.Empty;
+        public string Level {get; set;} = string.Empty;
     }
 }
